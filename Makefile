@@ -2,7 +2,7 @@
 .SILENT:
 
 build:
-	go build -o ./.bin/bot ./cmd/bot/main.go
+	go build -o ./.bin/bot main.go
 
 run: build
 	./.bin/bot

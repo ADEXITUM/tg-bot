@@ -6,13 +6,14 @@ import (
 	"tg-bot/pkg/telegram/types"
 )
 
-func InitBot() {
+func SetWebhook() {
 	_, err := http.Get(
-		fmt.Sprintf("%s%s/getMe",
+		fmt.Sprintf("%s%s/setWebhook?url=%s",
 			types.TELEGRAM_URL,
 			types.BOT_TOKEN,
+			types.BOT_ADDRESS,
 		))
 	if err != nil {
-		fmt.Println("error while get request: ", err)
+		fmt.Println("error while get request")
 	}
 }
