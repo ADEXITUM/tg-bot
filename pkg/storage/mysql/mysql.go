@@ -4,25 +4,16 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"tg-bot/pkg/telegram/types"
 	"time"
 
-	"github.com/go-sql-driver/mysql"
 	_ "github.com/go-sql-driver/mysql"
 )
 
 var db *sql.DB
 
 func mysqlConn(dbName string) *sql.DB {
-	cfg := mysql.Config{
-		User:   "root",
-		Passwd: "root",
-		Net:    "tcp",
-		Addr:   "192.168.56.1:3306",
-		DBName: "bot",
-	}
-	// Get a database handle.
-	var err error
-	db, err = sql.Open("mysql", cfg.FormatDSN())
+	db, err := sql.Open("mysql", types.CFG.FormatDSN())
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -36,10 +27,8 @@ func mysqlConn(dbName string) *sql.DB {
 	return db
 }
 
-//TODO: 1) Complete mysqlConn()
-//		2) Force deleting of previous database entry for each userID
 func InsertUserInfo(chatID int, username string) {
-	database := mysqlConn("bot")
+	database := mysqlConn(types.CFG.DBName)
 
 	defer database.Close()
 

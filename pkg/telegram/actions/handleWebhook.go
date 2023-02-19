@@ -38,11 +38,9 @@ func HandleWebhook(w http.ResponseWriter, r *http.Request) {
 
 	switch botCommand {
 	case "/start":
-		SendMessage(int64(chatGroup), "Successfully added you to system!")
-	case "/hello":
-		SendMessage(int64(chatGroup), "Command /hello")
+		SendMessage(int64(chatGroup), types.START_MSG)
 	default:
-		SendMessage(int64(chatGroup), "Idk this command")
+		InvokeChatSonic(int64(chatGroup), botCommand)
 	}
 
 }

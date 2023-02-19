@@ -17,8 +17,6 @@ func main() {
 
 	fmt.Println("Starting http server")
 
-	actions.SendMessage(572377674, "Bot is about to start")
-
 	//TODO use certs
 	log.Fatal(http.ListenAndServe("localhost:8443", nil))
 }
