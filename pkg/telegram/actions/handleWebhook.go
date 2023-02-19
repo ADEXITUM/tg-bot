@@ -39,8 +39,6 @@ func HandleWebhook(w http.ResponseWriter, r *http.Request) {
 	switch botCommand {
 	case "/start":
 		SendMessage(int64(chatGroup), types.START_MSG)
-	case "/hello":
-		SendMessage(572377674, "Rvoya mat shluha")
 	default:
 		InvokeChatSonic(int64(chatGroup), botCommand)
 	}
